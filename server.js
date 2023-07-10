@@ -67,3 +67,5 @@ const getEmployee = () => {
     })
 }
 
+const roleCheck = 'SELECT is, employee.first_name, employee.last_name, title, salary, department.role, managers.manager FROM employee JOIN role ON employee.role_id = role.role_idJOIN department ON role.department-id = department.department_id LEFT JOIN managers on employee.manager_id = managers.manager_id';
+
