@@ -1,4 +1,4 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 const inquirer = require("inquirer");
 const consoleTables =require("console.table");
 var managers = [];
@@ -283,8 +283,8 @@ addEmployees = () => {
         });
     }
     else {
-        connection.query('INSERT INTO employee(first_name, last_name, role_id, manager_id)
-        values ('${answer.first_name}', '${answer.last_name)', ${answer.role})', (err,res) => {
+        connection.query(`INSERT INTO employee(first_name, last_name, role_id, manager_id)
+        values ('${answer.first_name}', '${answer.last_name}', ${answer.role})`, (err,res) => {
             if (err) throw err;
             init();
         })
@@ -292,7 +292,7 @@ addEmployees = () => {
 })
 }
 
-const removeEmployee = ( => {
+const removeEmployee = () => {
     inquirer
     .prompt({
         type: 'list',
@@ -305,5 +305,5 @@ const removeEmployee = ( => {
             init();
         })
     })
-})
+};
 init()
